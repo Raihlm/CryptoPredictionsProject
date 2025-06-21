@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitcoin Hub - Complete Guide</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #533a71 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Animated Background */
+        .background-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.15;
+        }
+
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .shape {
+            position: absolute;
+            background: linear-gradient(45deg, #f7931a, #ffab00, #ff6b35);
+            border-radius: 50%;
+            animation: float 25s infinite ease-in-out;
+        }
+
+        .shape:nth-child(1) { width: 100px; height: 100px; top: 10%; left: 5%; animation-delay: 0s; }
+        .shape:nth-child(2) { width: 150px; height: 150px; top: 50%; right: 10%; animation-delay: 8s; }
+        .shape:nth-child(3) { width: 80px; height: 80px; bottom: 20%; left: 15%; animation-delay: 16s; }
+        .shape:nth-child(4) { width: 120px; height: 120px; top: 70%; left: 60%; animation-delay: 12s; }
+        .shape:nth-child(5) { width: 90px; height: 90px; top: 25%; right: 30%; animation-delay: 20s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
+            25% { transform: translateY(-40px) rotate(90deg) scale(1.1); }
+            50% { transform: translateY(20px) rotate(180deg) scale(0.9); }
+            75% { transform: translateY(-20px) rotate(270deg) scale(1.05); }
+        }
+
+        /* Header */
+        .header {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 2px solid rgba(247, 147, 26, 0.3);
+            padding: 1.5rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .bitcoin-logo {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #f7931a, #ffab00);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: #fff;
+            box-shadow: 0 0 20px rgba(247, 147, 26, 0.5);
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { box-shadow: 0 0 20px rgba(247, 147, 26, 0.5); }
+            to { box-shadow: 0 0 40px rgba(247, 147, 26, 0.8), 0 0 60px rgba(247, 147, 26, 0.3); }
+        }
+
+        .logo h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, #f7931a, #ffab00, #ff6b35);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: #ccc;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: #f7931a;
+            transform: translateY(-2px);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(45deg, #f7931a, #ffab00);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 6rem 2rem;
+            text-align: center;
+            background: radial-gradient(ellipse at center, rgba(247, 147, 26, 0.1) 0%, transparent 70%);
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, #ffffff, #f7931a, #ffab00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #ccc;
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .cta-primary {
+            background: linear-gradient(45deg, #f7931a, #ffab00);
+            color: #000;
+        }
+
+        .cta-secondary {
+            background: transparent;
+            color: #f7931a;
+            border: 2px solid #f7931a;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(247, 147, 26, 0.3);
+        }
+
+        /* Main Container */
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Section Styles */
+        .section {
+            margin-bottom: 6rem;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ffffff, #f7931a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #aaa;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Cards */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .info-card {
+            background: rgba(15, 15, 15, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(247, 147, 26, 0.2);
+            border-radius: 24px;
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(247, 147, 26, 0.5);
+            box-shadow: 0 25px 50px rgba(247, 147, 26, 0.2);
+        }
+
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #f7931a, transparent);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #f7931a, #ffab00);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #000;
+            box-shadow: 0 8px 25px rgba(247, 147, 26, 0.3);
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .card-content {
+            color: #ccc;
+            line-height: 1.7;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #f7931a, #ffab00);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row;
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            background: rgba(15, 15, 15, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(247, 147, 26, 0.2);
+            border-radius: 16px;
+            padding: 2rem;
+            width: 45%;
+            position: relative;
+        }
+
+        .timeline-date {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(45deg, #f7931a, #ffab00);
+            color: #000;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        /* Mining Section */
+        .mining-process {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .process-step {
+            background: rgba(15, 15, 15, 0.6);
+            border: 1px solid rgba(247, 147, 26, 0.2);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .process-step:hover {
+            transform: translateY(-5px);
+            border-color: rgba(247, 147, 26, 0.5);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(45deg, #f7931a, #ffab00);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            font-weight: 700;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-item {
+            background: rgba(15, 15, 15, 0.6);
+            border: 1px solid rgba(247, 147, 26, 0.2);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            border-color: rgba(247, 147, 26, 0.5);
+            box-shadow: 0 15px 30px rgba(247, 147, 26, 0.1);
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #f7931a;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #ccc;
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(5, 5, 5, 0.95);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(247, 147, 26, 0.2);
+            padding: 3rem 2rem 2rem;
+            margin-top: 6rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer p {
+            color: #888;
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            color: #888;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: #f7931a;
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1.1rem; }
+            .cta-buttons { flex-direction: column; align-items: center; }
+            .cards-grid { grid-template-columns: 1fr; }
+            .main-container { padding: 2rem 1rem; }
+            .nav-links { display: none; }
+            .timeline::before { left: 20px; }
+            .timeline-item { flex-direction: column !important; align-items: flex-start; }
+            .timeline-content { width: 100%; margin-left: 40px; }
+            .timeline-date { position: static; transform: none; margin-bottom: 1rem; display: inline-block; }
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="background-animation">
+        <div class="floating-shapes">
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
+    </div>
+
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <div class="bitcoin-logo">
+                    <i class="fab fa-bitcoin"></i>
+                </div>
+                <h1>Bitcoin Hub</h1>
+            </div>
+            <nav class="nav-links">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#creator" class="nav-link">Creator</a>
+                <a href="#how-it-works" class="nav-link">How It Works</a>
+                <a href="#mining" class="nav-link">Mining</a>
+                <a href="#timeline" class="nav-link">Timeline</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>The Future of Money</h1>
+            <p>Discover Bitcoin - the revolutionary digital currency that's changing the world of finance. Learn everything from its mysterious creator to the complex mining process that secures the network.</p>
+            <div class="cta-buttons">
+                <a href="#about" class="cta-btn cta-primary">
+                    <i class="fas fa-rocket"></i>
+                    Explore Bitcoin
+                </a>
+                <a href="#how-it-works" class="cta-btn cta-secondary">
+                    <i class="fas fa-play"></i>
+                    How It Works
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div class="main-container">
+        <section id="about" class="section">
+            <div class="section-header">
+                <h2 class="section-title">What is Bitcoin?</h2>
+                <p class="section-subtitle">Understanding the world's first cryptocurrency</p>
+            </div>
+            <div class="cards-grid">
+                <div class="info-card fade-in">
+                    <div class="card-icon">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <h3 class="card-title">Digital Currency</h3>
+                    <div class="card-content">
+                        Bitcoin is a decentralized digital currency that enables peer-to-peer transactions without the need for intermediaries like banks. It exists only in digital form and is secured by cryptographic principles.
+                    </div>
+                </div>
+                <div class="info-card fade-in">
+                    <div class="card-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3 class="card-title">Blockchain Technology</h3>
+                    <div class="card-content">
+                        Built on blockchain technology, Bitcoin maintains a public ledger of all transactions. This distributed database is maintained by a network of computers worldwide, ensuring transparency and security.
+                    </div>
+                </div>
+                <div class="info-card fade-in">
+                    <div class="card-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="card-title">Decentralized & Secure</h3>
+                    <div class="card-content">
+                        No single authority controls Bitcoin. The network is maintained by thousands of nodes worldwide, making it resistant to censorship and single points of failure while ensuring maximum security.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="creator" class="section">
+            <div class="section-header">
+                <h2 class="section-title">The Mystery Creator</h2>
+                <p class="section-subtitle">Satoshi Nakamoto - The pseudonymous genius behind Bitcoin</p>
+            </div>
+            <div class="info-card fade-in" style="max-width: 800px; margin: 0 auto;">
+                <div class="card-icon">
+                    <i class="fas fa-user-secret"></i>
+                </div>
+                <h3 class="card-title">Satoshi Nakamoto</h3>
+                <div class="card-content">
+                    <p style="margin-bottom: 1rem;">Satoshi Nakamoto is the pseudonymous person or group who created Bitcoin and authored its original white paper in 2008. Despite numerous investigations and theories, Satoshi's true identity remains one of the biggest mysteries in the tech world.</p>
+                    
+                    <p style="margin-bottom: 1rem;"><strong>Key Facts:</strong></p>
+                    <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+                        <li>Published the Bitcoin whitepaper on October 31, 2008</li>
+                        <li>Released the first Bitcoin software in January 2009</li>
+                        <li>Gradually faded from public view around 2011</li>
+                        <li>Estimated to own around 1 million bitcoins (never moved)</li>
+                        <li>Communicated only through online forums and emails</li>
+                    </ul>
+                    
+                    <p>Satoshi's disappearance was intentional, ensuring Bitcoin could evolve as a truly decentralized system without a central figurehead. This selfless act helped establish Bitcoin's credibility as a peer-to-peer currency.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="how-it-works" class="section">
+            <div class="section-header">
+                <h2 class="section-title">How Bitcoin Works</h2>
+                <p class="section-subtitle">Understanding the technology behind digital gold</p>
+            </div>
+            <div class="cards-grid">
+                <div class="info-card fade-in">
+                    <div class="card-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <h3 class="card-title">Transactions</h3>
+                    <div class="card-content">
+                        When you send Bitcoin, you're broadcasting a transaction to the network. This transaction includes the sender's address, receiver's address, amount, and a digital signature proving ownership of the funds.
+                    </div>
+                </div>
+                <div class="info-card fade-in">
+                    <div class="card-icon">
+                        <i class="fas fa-link"></i>
+                    </div>
+                    <h3 class="card-title">Blockchain</h3>
+                    <div class="card-content">
+                        Transactions are grouped into blocks and linked together chronologically, forming a chain. Each block contains a cryptographic hash of the previous block, creating an immutable record.
+                    </div>
+                </div>
+                <div class="info-card fade-in">
+                    <div class="card-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3 class="card-title">Consensus</h3>
+                    <div class="card-content">
+                        The network uses Proof of Work consensus mechanism. Miners compete to solve complex mathematical puzzles to validate transactions and add new blocks to the blockchain.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="mining" class="section">
+            <div class="section-header">
+                <h2 class="section-title">Bitcoin Mining</h2>
+                <p class="section-subtitle">The process that secures the network and creates new bitcoins</p>
+            </div>
+            <div class="mining-process">
+                <div class="process-step fade-in">
+                    <div class="step-number">1</div>
+                    <div class="card-icon">
+                        <i class="fas fa-broadcast-tower"></i>
+                    </div>
+                    <h3 class="card-title">Transaction Collection</h3>
+                    <div class="card-content">
+                        Miners collect pending transactions from the network's memory pool (mempool) and verify their validity.
+                    </div>
+                </div>
+                <div class="process-step fade-in">
+                    <div class="step-number">2</div>
+                    <div class="card-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3 class="card-title">Hash Calculation</h3>
+                    <div class="card-content">
+                        Miners use powerful computers to solve complex mathematical puzzles, trying billions of calculations per second.
+                    </div>
+                </div>
+                <div class="process-step fade-in">
+                    <div class="step-number">3</div>
+                    <div class="card-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3 class="card-title">Block Reward</h3>
+                    <div class="card-content">
+                        The first miner to solve the puzzle broadcasts the solution and receives newly created bitcoins plus transaction fees.
+                    </div>
+                </div>
+                <div class="process-step fade-in">
+                    <div class="step-number">4</div>
+                    <div class="card-icon">
+                        <i class="fas fa-sync"></i>
+                    </div>
+                    <h3 class="card-title">Network Update</h3>
+                    <div class="card-content">
+                        Other nodes verify the solution and add the new block to their copy of the blockchain, and the process repeats.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-item fade-in">
+                    <div class="stat-value">10 min</div>
+                    <div class="stat-label">Average Block Time</div>
+                </div>
+                <div class="stat-item fade-in">
+                    <div class="stat-value">6.25</div>
+                    <div class="stat-label">BTC Block Reward</div>
+                </div>
+                <div class="stat-item fade-in">
+                    <div class="stat-value">21M</div>
+                    <div class="stat-label">Maximum Supply</div>
+                </div>
+                <div class="stat-item fade-in">
+                    <div class="stat-value">~4 years</div>
+                    <div class="stat-label">Halving Cycle</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="timeline" class="section">
+            <div class="section-header">
+                <h2 class="section-title">Bitcoin Timeline</h2>
+                <p class="section-subtitle">Key milestones in Bitcoin's history</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <h3>Bitcoin Whitepaper</h3>
+                        <p>Satoshi Nakamoto publishes "Bitcoin: A Peer-to-Peer Electronic Cash System" to a cryptography mailing list.</p>
+                    </div>
+                    <div class="timeline-date">Oct 2008</div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <h3>Genesis Block</h3>
+                        <p>The first Bitcoin block is mined, marking the birth of the Bitcoin blockchain and cryptocurrency.</p>
+                    </div>
+                    <div class="timeline-date">Jan 2009</div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <h3>First Transaction</h3>
+                        <p>Laszlo Hanyecz purchases two pizzas for 10,000 BTC, marking the first real-world Bitcoin transaction.</p>
+                    </div>
+                    <div class="timeline-date">May 2010</div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <h3>First Halving</h3>
+                        <p>Bitcoin's first halving event reduces the block reward from 50 BTC to 25 BTC per block.</p>
+                    </div>
+                    <div class="timeline-date">Nov 2012</div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <h3>Mainstream Adoption</h3>
+                        <p>Major companies like Tesla and Square add Bitcoin to their balance sheets, signaling institutional adoption.</p>
+                    </div>
+                    <div class="timeline-date">2020-2021</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 Bitcoin Hub. Educational content about Bitcoin and cryptocurrency.</p>
+            <p>This website is for informational purposes only and does not constitute financial advice.</p>
+            <div class="social-links">
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-reddit"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Animate stats on scroll
+        const animateStats = () => {
+            const stats = document.querySelectorAll('.stat-value');
+            stats.forEach(stat => {
+                const rect = stat.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    const finalText = stat.textContent;
+                    if (!stat.hasAttribute('data-animated')) {
+                        stat.setAttribute('data-animated', 'true');
+                        // Add a subtle animation effect
+                        stat.style.transform = 'scale(1.1)';
+                        setTimeout(() => {
+                            stat.style.transform = 'scale(1)';
+                        }, 200);
+                    }
+                }
+            });
+        };
+
+        window.addEventListener('scroll', animateStats);
+
+        // Add dynamic background particles
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.cssText = `
+                position: absolute;
+                width: 2px;
+                height: 2px;
+                background: #f7931a;
+                border-radius: 50%;
+                opacity: 0.3;
+                animation: particleFloat 15s linear infinite;
+                left: ${Math.random() * 100}%;
+                top: 100%;
+            `;
+            
+            document.querySelector('.floating-shapes').appendChild(particle);
+            
+            setTimeout(() => {
+                particle.remove();
+            }, 15000);
+        }
+
+        // Add particle animation CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes particleFloat {
+                to {
+                    transform: translateY(-100vh) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Create particles periodically
+        setInterval(createParticle, 2000);
+
+        // Add hover effects to cards
+        document.querySelectorAll('.info-card, .process-step, .stat-item').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-8px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Update current year in footer
+        const currentYear = new Date().getFullYear();
+        document.querySelector('.footer-content p').innerHTML = 
+            `&copy; ${currentYear} Bitcoin Hub. Educational content about Bitcoin and cryptocurrency.`;
+
+        // Add loading animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+
+        // Mobile menu toggle (if needed)
+        const createMobileMenu = () => {
+            if (window.innerWidth <= 768) {
+                const header = document.querySelector('.header-content');
+                const navLinks = document.querySelector('.nav-links');
+                
+                if (!document.querySelector('.mobile-menu-btn')) {
+                    const menuBtn = document.createElement('button');
+                    menuBtn.className = 'mobile-menu-btn';
+                    menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    menuBtn.style.cssText = `
+                        background: none;
+                        border: none;
+                        color: #f7931a;
+                        font-size: 1.5rem;
+                        cursor: pointer;
+                        display: block;
+                    `;
+                    
+                    menuBtn.addEventListener('click', () => {
+                        navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+                        navLinks.style.flexDirection = 'column';
+                        navLinks.style.position = 'absolute';
+                        navLinks.style.top = '100%';
+                        navLinks.style.right = '0';
+                        navLinks.style.background = 'rgba(10, 10, 10, 0.95)';
+                        navLinks.style.padding = '1rem';
+                        navLinks.style.borderRadius = '8px';
+                        navLinks.style.backdropFilter = 'blur(20px)';
+                    });
+                    
+                    header.appendChild(menuBtn);
+                }
+            }
+        };
+
+        window.addEventListener('resize', createMobileMenu);
+        createMobileMenu();
+    </script>
+</body>
+</html>
