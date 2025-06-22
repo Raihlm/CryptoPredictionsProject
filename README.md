@@ -67,15 +67,20 @@ API        : [Coingecko](https://coinmarketcap.com/currencies/bitcoin/historical
 
 1. **Clone repositori**:
    git clone https://github.com/Raihlm/CryptoPredictionsProject
+
    cd CryptoPredictionsProject
+
    pip install -r requirements.txt
+
    python -m uvicorn app:app --reload
 
 pip install -r requirements.txt
+
 python3 -m uvicorn app:app --reload
 
 
 run this on terminal ( if your python ver < 3.13)
+
 python -m uvicorn app:app --reload
 
 ```bash
