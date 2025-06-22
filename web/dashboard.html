@@ -9,16 +9,11 @@
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
   <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
-   <!-- Option 1: Chart.js with Financial Plugin -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-financial"></script>
-  
-  <!-- Option 2: TradingView Lightweight Charts (Recommended) -->
   <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
-  
-  <!-- Option 3: ApexCharts (Good alternative) -->
-<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 </head>
 <body>
   <div class="background-animation">
@@ -54,9 +49,9 @@
         <div class="classification-report">
           <h4>Model Performance</h4>
           <ul>
-            <li>R² Score: <span id="r2-score">--</span></li>
-            <li>MAE: <span id="mae">--</span></li>
-            <li>RMSE: <span id="rmse">--</span></li>
+            <li>R² Score Total: <span id="r2-score">--</span></li>
+            <li>MAE Total: <span id="mae">--</span></li>
+            <li>RMSE Total: <span id="rmse">--</span></li>
           </ul>
         </div>
       </div>
@@ -149,7 +144,7 @@
                 <i class="fas fa-chart-area"></i> Line Chart
               </button>
             </div>
-            <!-- Satu set timeframe untuk keduanya -->
+           
               <div class="timeframe-controls" id="unified-timeframe">
                <button class="timeframe-btn active" data-timeframe="daily">Daily</button>
                <button class="timeframe-btn" data-timeframe="monthly">Monthly</button>

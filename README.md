@@ -1,27 +1,23 @@
-#  Crypto Price Predictor with Real-Time Updates
+#  Crypto Price Predictor 
 
-Sebuah proyek pembelajaran machine learning dan data engineering yang bertujuan untuk memprediksi harga Bitcoin secara harian, bulanan, tahunan, dan memprediksi arah candlestick (naik/turun) dengan integrasi data real-time dari Binance API.
-
+A project for learning Machine Learning to predict Bitcoin price
 -----------------------------------------------------------------------------------------------------------------------------
 
 # Project Description
-
-Proyek ini dibangun sebagai bagian dari pembelajaran tentang penerapan nyata machine learning dalam dunia finansial, khususnya pada pasar cryptocurrency. Tujuan utamanya adalah membangun sistem prediksi harga Bitcoin yang:
-
-- Menggunakan data historis dari tahun 2010 hingga 2025.
-- Mengambil data real-time harian secara otomatis dari API Coinngecko setiap pukul 12 siang.
-- Memprediksi harga harian, mingguan, bulanan, dan tahunan.
-
-This project built as part of learning about how we could apply machine learning model in financial industry and learn about cryptocurrency.   
+This project built as part of learning about how we could apply machine learning model in financial industry and learn about cryptocurrency. We Build This Project by:
+ - Using historical data from 2010 until 6 June 2025
+ - Pulling realtime data automatically from coingecko API every 24 hours at 12PM ( On Progress )
+ - predict next day, next week,next month and year 
+ - Integrating Sentiment Analysis ( On Progress )
 
 -----------------------------------------------------------------------------------------------------------------------------
 
-# Main Feature
+# Feature
 - Predict next day price (main Features)
 - we predict next week, month, year based on the next day price prediction * some np.random for estimating technique and because our model has it weak on predicting a long time.
 - the dashboard integrate realtime price from coingecko that update every 1 minute
 - visualitation of historical data with candlestick and line charts
-- confidence(from R Square * 100), and model evaluation.
+- confidence(from R Square * 100) and round it (for example our linear regression is 99,97% it rounded to 100), and model evaluation.
 -----------------------------------------------------------------------------------------------------------------------------
 # Folder Structure
 ```bash
@@ -119,11 +115,11 @@ And open a chance for integrating to a financial dashboard application on the fu
 # Technology we use:
 Python
 
-Pandas, NumPy, Matplotlib, Seaborn – untuk analisis dan visualisasi
+Pandas, NumPy, Matplotlib, Seaborn, mplfinance – for analysis and visualizing.
 
-Scikit-learn – untuk model machine learning dasar
+Scikit-learn – for building machine learning model
 
-WebSocket (coingecko API) – untuk streaming harga real-time
+WebSocket (coingecko API) – pulling realtime data
 
 
 # Liscence

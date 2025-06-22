@@ -1458,7 +1458,7 @@ async function loadHistoricalPredictions() {
   }
 }
 
-// TAMBAHAN: Fungsi untuk memastikan popup siap digunakan
+//  Fungsi untuk memastikan popup siap digunakan
 function ensurePopupReady() {
   const popup = document.getElementById('historical-popup');
   if (!popup) {
