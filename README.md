@@ -36,7 +36,7 @@ CryptoPredictionProject/
 │   ├── sentimentAnalysis.ipynb # we will add new features soon for creating a sentiment analysis and integrate it with the predictions, or just a helper indicator for trading.
 │
 ├── web/
-│   ├── static/   
+│   ├── static/               # Styling and frontend dashboard, and data for chart
 │   ├── dashboard.html         # main dashboard
 │   ├── bitcoinInfo.html      
 │      
@@ -66,31 +66,29 @@ API        : [Coingecko](https://coinmarketcap.com/currencies/bitcoin/historical
 ## How To Run This Project
 
 1. **Clone repositori**:
-   git clone https://github.com/username/crypto-price-predictor.git
-   cd crypto-price-predictor
-Install semua dependensi:
+   git clone https://github.com/Raihlm/CryptoPredictionsProject
+   cd CryptoPredictionsProject
+   pip install -r requirements.txt
+   python -m uvicorn app:app --reload
 
-bash
-Copy
-Edit
 pip install -r requirements.txt
+python3 -m uvicorn app:app --reload
+
 
 run this on terminal ( if your python ver < 3.13)
 python -m uvicorn app:app --reload
 
 ```bash
-# Project RunDown
+### Project RunDown
 
 DoneProgress:
-✅ Mengumpulkan dataset historis (2010–2025)
+✅ Gathering Historical Dataset (2010–2025)
 
 ✅ Explorating Daily, weekly, monnthly, yearly data
 
 ✅ Training Predictions model using Linear Regression And Random Forest
 
 ✅ Model Evaluation
-
-✅ Implementasi pengambilan data real-time otomatis
 
 ✅ Predict next day, week, month, year price
 
@@ -102,6 +100,7 @@ DoneProgress:
 
 🔜 sentiment analysis ( on progress )
 
+🔜 View Historical Predictions ( Still Bug & on progress )
 ```
 
 # Purpose & Reason To Create THis project
@@ -130,11 +129,9 @@ This project made for a learning media. Feel Free to use and modify this for non
 Rayhan
 LinkedIn: (https://www.linkedin.com/in/muhammad-rayhan-ilhamdi-177520314?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app)
 
+## ✅ Available Endpoints After Run
 
-
------------------------------------------------------------------------------------------------------------------------------
---------- run app -----------
-
-if python vers 3.13
-run this on terminal
-python3 -m uvicorn app:app --reload
+http://127.0.0.1:8000 → dashboard
+http://127.0.0.1:8000/api/health → check health & loaded models
+http://127.0.0.1:8000/api/prediction → check predictions price
+http://127.0.0.1:8000/api/model-performance → check performance model
