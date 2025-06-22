@@ -117,7 +117,7 @@ And open a chance for integrating to a financial dashboard application on the fu
 
 
 # Technology we use:
-Python
+Python 3.13.1
 
 Pandas, NumPy, Matplotlib, Seaborn, mplfinance – for analysis and visualizing.
 
