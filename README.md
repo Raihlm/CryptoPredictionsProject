@@ -137,6 +137,9 @@ LinkedIn: (https://www.linkedin.com/in/muhammad-rayhan-ilhamdi-177520314?utm_sou
 ## ✅ Available Endpoints After Run
 
 http://127.0.0.1:8000 → dashboard
+
 http://127.0.0.1:8000/api/health → check health & loaded models
+
 http://127.0.0.1:8000/api/prediction → check predictions price
+
 http://127.0.0.1:8000/api/model-performance → check performance model
