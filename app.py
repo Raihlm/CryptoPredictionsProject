@@ -540,6 +540,24 @@ async def get_data_statistics():
         }
     else:
         return {"error": "No data available"}
+    
+@app.get("/api/historical-predictions")
+async def get_historical_predictions(model: str = "all"):
+    data = [
+        {"date": "2025-06-10", "model": "linear", "predicted_price": 110000, "confidence": 95},
+        {"date": "2025-06-09", "model": "random_forest", "predicted_price": 108000, "confidence": 85},
+        {"date": "2025-06-08", "model": "linear", "predicted_price": 107000, "confidence": 90},
+    ]
+    if model != "all":
+        data = [d for d in data if d["model"] == model]
+        
+    return data
+
+@app.get('/bitcoinInfo', response_class=HTMLResponse)
+async def bitcoin_info():
+    with open("web/bitcoinInfo.html", "r") as f:
+        return HTMLResponse(content=f.read())
+
 
 if __name__ == "__main__":
     import uvicorn

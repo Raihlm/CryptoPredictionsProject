@@ -1516,4 +1516,5 @@ function cleanup() {
 
 window.testPopup = testPopup;
 // Handle page unload
+window.showHistoricalPredictions = showHistoricalPredictions;
 window.addEventListener('beforeunload', cleanup);

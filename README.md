@@ -105,7 +105,7 @@ DoneProgress:
 
 🔜 sentiment analysis ( on progress )
 
-🔜 View Historical Predictions ( Still Bug & on progress )
+🔜 View Historical Predictions ( The historical value still mock )
 ```
 
 # Purpose & Reason To Create THis project
