@@ -30,7 +30,7 @@ CryptoPredictionProject/
 │
 ├── notebooks/
 │   ├── 01_data_wrangling.ipynb # it contains data cleaning, and data exploration
-│   ├── 02_modelTraining.ipynb # this is the notebooks file to create a model before ( we not gonna use this )
+│   ├── 02_modelTraining.ipynb # this is the notebooks file to create a model before ( we not gonna use this on this main project )
 │   ├── loadJSONDATA.ipynb # to make a json data for displaying candlestick and line chart in dashboard
 │   ├── cekModel.ipynb # (we not gonna use this in this project)
 │   ├── sentimentAnalysis.ipynb # we will add new features soon for creating a sentiment analysis and integrate it with the predictions, or just a helper indicator for trading.
