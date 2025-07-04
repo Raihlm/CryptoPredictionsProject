@@ -21,6 +21,8 @@ import threading
 import time
 from pydantic import BaseModel
 import ssl
+import sqlite3
+from contextlib import contextmanager
 
 
 logging.basicConfig(level=logging.INFO)
@@ -337,6 +339,7 @@ def run_scheduler():
     while True:
         schedule.run_pending()
         time.sleep(60)  # Check every minute
+
 
 # API Endpoints
 @app.on_event("startup")

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Bitcoin Price Dashboard</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/web/static/style.css">
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
@@ -30,6 +31,17 @@
         <i class="fab fa-bitcoin"></i>
         <h1>CryptoVision</h1>
       </div>
+
+      <div class="navbar">
+        <ul class="nav-links">
+          <li><a href="../web/dashboard.html">Dashboard</a></li>
+          <li><a href="../web/analysisPage/analysis.html">Analysis</a></li>
+          <li><a href="../web/newsPage/news.html">News</a></li>
+          <li><a href="#">Trading</a></li>
+          <li><a href="../web/chatbotPage/ChatBot.html">Ai Agent</a></li>
+        </ul>
+      </div>
+
       <div class="status-indicator">
         <div class="status-dot"></div>
         <span>Live Data</span>
@@ -37,6 +49,53 @@
       </div>
     </div>
   </header>
+
+  <div class="img-slideshow">
+    <div class="slide active">
+      <img src="../photo/slide1.jpg" alt="Slide 1">
+      <div class="slide-caption">
+        <h2>Smart Trading Insights</h2>
+        <p>Leverage AI-driven sentiment analysis and market intelligence to make informed trading decisions. Access professional-grade tools and strategies.</p>
+      </div>
+    </div>
+  
+    <div class="slide">
+      <img src="../photo/slide2.jpg" alt="Slide 2">
+      <div class="slide-caption">
+        <h2>Real-Time Market Monitoring</h2>
+        <p>Stay ahead with live price updates, volume analysis, and market cap tracking. Get instant alerts for significant price movements and market events.</p>
+      </div>
+    </div>
+  
+    <div class="slide">
+      <img src="../photo/chartAnalysis.jpeg" alt="Slide 3">
+      <div class="slide-caption">
+        <h2>Interactive Charts & Analysis</h2>
+        <p>Explore intuitive candlestick and line charts with advanced technical indicators to gain deep market insights.</p>
+      </div>
+    </div>
+  
+    <div class="slide">
+      <img src="../photo/aiInsight.webp" alt="Slide 4">
+      <div class="slide-caption">
+        <h2>AI-Powered Price Predictions</h2>
+        <p>Advanced machine learning models predict price movements with high accuracy based on historical data and real-time sentiment.</p>
+      </div>
+    </div>
+  
+    <div class="slide">
+      <img src="../photo/realtimePhoto.jpg" alt="Slide 5">
+      <div class="slide-caption">
+        <h2>Seamless Real-Time Insights</h2>
+        <p>Get continuously updated market intelligence to support dynamic trading strategies anytime, anywhere.</p>
+      </div>
+    </div>
+  
+    <!-- Navigation Buttons -->
+    <button class="prev" onclick="changeSlide(-1)">❮</button>
+    <button class="next" onclick="changeSlide(1)">❯</button>
+  </div>
+  
 
   <div class="content-wrapper">
     <div class="sidebar">
@@ -46,40 +105,30 @@
           <h2>Bitcoin</h2>
           <div class="subtitle">Cryptocurrency</div>
         </div>
-        <div class="classification-report">
-          <h4>Model Performance</h4>
-          <ul>
-            <li>R² Score Total: <span id="r2-score">--</span></li>
-            <li>MAE Total: <span id="mae">--</span></li>
-            <li>RMSE Total: <span id="rmse">--</span></li>
-          </ul>
-        </div>
       </div>
-
+      <button class="cta-button" onclick="window.open('bitcoinInfo.html', '_blank')">
+        Introduction To Bitcoin
+      </button>
+    
+    
       <div class="project-description">
         <h3>About This Dashboard</h3>
-        <p>This advanced Bitcoin analytics dashboard provides real-time market price and historical data visualization through interactive line and candlestick charts.</p>
-        <p>Experience comprehensive daily trading analysis with sophisticated moving averages and predictive algorithms powered by machine learning using Linear Regression and Random Forest.</p>
+        <p>This advanced Bitcoin analytics dashboard provides real-time market price and historical data visualization.</p>
       </div>
-
-      <div class="features">
-        <h4>Key Features</h4>
-        <ul class="feature-list">
-          <li>Real-time price tracking</li>
-          <li>Interactive candlestick & line charts</li>
-          <li><s>Advanced technical indicators</s></li>
-          <li>AI-powered price predictions</li>
-          <li>Historical data analysis</li>
-          <li><s>Market sentiment tracking</s></li>
-          <li><s>Market sentiment & News analysis</s></li>
-
-        </ul>
+      
+      <div class="ai-alerts">
+        <h3>🚨 AI Alerts</h3>
+                <div class="alert-item">
+                    <div class="alert-icon">!</div>
+                    <div>
+                        <strong>Whale Movement</strong><br>
+                        <small>500 BTC moved to Binance</small>
+                    </div>
+                </div>
       </div>
-
-      <button class="cta-button" onclick="window.open('/bitcoinInfo', '_blank')">
-        Learn About Bitcoin →
-      </button>
+      
     </div>
+    
 
     <div class="main-container">
       <div class="stats-grid">
@@ -175,6 +224,27 @@
           <button class="model-btn" data-model="random_forest" onclick="setActiveModel('random_forest')">
             <i class="fas fa-tree"></i> Random Forest
           </button>
+          <button class="model-btn" data-model="LSTM" onclick="setActiveModel('LSTM')">
+            <i class="fas fa-tree"></i> LSTM
+          </button> 
+          <button class="model-btn" data-model="Transformer" onclick="setActiveModel('Transformer')">
+            <i class="fas fa-tree"></i> Transformer
+          </button> 
+          <button class="model-btn" data-model="xgboost" onclick="setActiveModel('xgboost')">
+            <i class="fas fa-tree"></i> XGBoost
+          </button> 
+          <button class="model-btn" data-model="ARIMA" onclick="setActiveModel('ARIMA')">
+            <i class="fas fa-tree"></i> ARIMA
+          </button> 
+          <button class="model-btn" data-model="Prophet" onclick="setActiveModel('Prophet')">
+            <i class="fas fa-tree"></i> Prophet
+          </button> 
+          <button class="model-btn" data-model="SVR" onclick="setActiveModel('SVR')">
+            <i class="fas fa-tree"></i> Support Vector Regression
+          </button> 
+          <button class="model-btn" data-model="KNN" onclick="setActiveModel('KNN')">
+            <i class="fas fa-tree"></i> K-Nearest Neighbors
+          </button> 
         </div>
   
         <div class="prediction-cards">
@@ -229,30 +299,130 @@
     </div>
   </div>
 
+
   <!-- Historical Predictions Popup -->
-  <div id="historical-popup" class="popup-overlay" style="display: none;">
-    <div class="popup-content">
-      <div class="popup-header">
-        <h3>Historical Predictions</h3>
-        <button class="close-btn" id="close-history-btn">
-          <i class="fas fa-times"></i>
-        </button>
+<div id="historical-popup" class="popup-overlay" style="display: none;">
+  <div class="popup-content">
+    <div class="popup-header">
+      <h3>Historical Predictions</h3>
+      <button class="close-btn" id="close-history-btn" onclick="closeHistoricalPredictions()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="popup-body">
+      <div class="filter-controls">
+        <select id="model-filter">
+          <option value="all">All Models</option>
+          <option value="linear">Linear Regression</option>
+          <option value="random_forest">Random Forest</option>
+        </select>
       </div>
-      <div class="popup-body">
-        <div class="filter-controls">
-          <select id="model-filter">
-            <option value="all">All Models</option>
-            <option value="linear">Linear Regression</option>
-            <option value="random_forest">Random Forest</option>
-          </select>
-        </div>
-        <div class="predictions-list" id="historical-predictions-list">
-          <p>Loading historical predictions...</p>
-        </div>
+      <div class="predictions-list" id="historical-predictions-list">
+        <p>Loading historical predictions...</p>
       </div>
     </div>
   </div>
+</div>
+
+  <div class="classification-report">
+    <h4>Total Models Performance</h4>
+    <div class="total-performance">
+      <p>Total Models: <span id="total-models">9</span></p>
+      <p>Best Model: <span id="best-model" class="best-model-badge">--</span></p>
+    </div>
+    <ul class="performance-list">
+      <li>
+        <span class="metric-title">Linear Regression</span>
+        <span class="metric-value" id="linear-performance">R²: --, MAE: --, RMSE: --</span>
+      </li>
+      <li>
+        <span class="metric-title">Random Forest</span>
+        <span class="metric-value" id="random-forest-performance">R²: --, MAE: --, RMSE: --</span>
+      </li>
+      <li>
+        <span class="metric-title">LSTM</span>
+        <span class="metric-value" id="lstm-performance">R²: --, MAE: --, RMSE: --</span>
+      </li>
+      <li>
+        <span class="metric-title">Transformer</span>
+        <span class="metric-value" id="transformer-performance">R²: --, MAE: --, RMSE: --</span>
+      </li>
+      <li>
+        <span class="metric-title">XGBoost</span>
+        <span class="metric-value" id="xgboost-performance">R²: --, MAE: --, RMSE: --</span>
+      </li>
+      <li>
+        <span class="metric-title">ARIMA</span>
+        <span class="metric-value" id="arima-performance">R²: --, MAE: --, RMSE: --</span>
+      </li>
+      <li>
+        <span class="metric-title">Prophet</span>
+        <span class="metric-value" id="prophet-performance">R²: --, MAE: --, RMSE: --</span>
+      </li>
+      <li>
+        <span class="metric-title">Support Vector Regression</span>
+        <span class="metric-value" id="svr-performance">R²: --, MAE: --, RMSE: --</span>
+      </li>
+      <li>
+        <span class="metric-title">K-Nearest Neighbors</span>
+        <span class="metric-value" id="knn-performance">R²: --, MAE: --, RMSE: --</span>
+      </li>
+    </ul>
+
+    <span class="metric-value tooltip" data-tooltip="R² (R-Squared) shows the proportion of variance explained by the model.">R²?</span>
+    <span class="metric-value tooltip" data-tooltip="MAE (Mean Absolute Error) measures the average magnitude of errors.">  MAE?</span>
+    <span class="metric-value tooltip" data-tooltip="RMSE (Root Mean Squared Error) measures the square root of the average squared differences.">RMSE?</span>
+
+  </div>
+
+   <div class="insight">
+    <h2 class="insight-title">Market Insights</h2>
+    <p class="insight-description">Stay updated with the latest market trends and insights from our expert analysts.</p>
+    <ul class="insight-links">
+      <li><a href="https://www.coindesk.com/markets/" target="_blank">Coindesk Markets</a></li>
+      <li><a href="https://www.cointelegraph.com/bitcoin-price-analysis" target="_blank">Cointelegraph Analysis</a></li>
+      <li><a href="https://www.investing.com/crypto/bitcoin" target="_blank">Investing.com Bitcoin</a></li>
+      <li><a href="https://www.binance.com/en/markets" target="_blank">Binance Markets</a></li>
+    </ul>
+   </div>
+  
+
+  <div class="education-section">
+    <h2 class="education-title">Learn More About Bitcoin</h2>
+    <p class="education-description">Explore our resources to understand Bitcoin's technology, market dynamics, and investment strategies.</p>
+    <ul class="education-links">
+      <li><a href="https://bitcoin.org/en/how-it-works" target="_blank">How Bitcoin Works</a></li>
+      <li><a href="https://www.investopedia.com/terms/b/bitcoin.asp" target="_blank">Bitcoin Basics</a></li>
+      <li><a href="https://www.coindesk.com/learn/" target="_blank">Coindesk Learning Center</a></li>
+      <li><a href="https://www.blockchain.com/learning-portal" target="_blank">Blockchain Learning Portal</a></li>
+    </ul>
+  </div>
+  
+  <footer class="app-footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <i class="fab fa-bitcoin"></i>
+        <span>CryptoVision</span>
+      </div>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Contact Us</a>
+      </div>
+      <div class="footer-social">
+        <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 CryptoVision. All rights reserved.</p>
+    </div>
+  </footer>
+
+</div>
 
   <script src="/web/static/script.js" type="module"></script>
+  <script src="/web/static/slideshow.js" type="module"></script>
 </body>
 </html>

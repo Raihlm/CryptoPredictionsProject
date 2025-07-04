@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptoVision AI - Advanced Crypto Assistant</title>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/web/chatbotPage/ChatBot.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Meta Tags for SEO -->
+    <meta name="description" content="CryptoVision AI - Your intelligent cryptocurrency trading assistant powered by advanced AI">
+    <meta name="keywords" content="cryptocurrency, AI, trading, bitcoin, blockchain, crypto assistant">
+    <meta name="author" content="CryptoVision">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/web/static/favicon.ico">
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#00ff88">
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
+</head>
+<body class="dark-theme" data-theme="dark">
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-content">
+            <div class="crypto-logo">
+                <i class="fab fa-bitcoin"></i>
+            </div>
+            <div class="loading-text">
+                <h2>CryptoVision AI</h2>
+                <p>Initializing your crypto assistant...</p>
+            </div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" role="banner">
+        <div class="header-content">
+            <div class="logo">
+                <i class="fab fa-bitcoin" aria-hidden="true"></i>
+                <h1>CryptoVision</h1>
+            </div>
+            
+            <!-- Enhanced Navigation -->
+            <nav class="navbar" role="navigation" aria-label="Main navigation">
+                <ul class="nav-links">
+                    <li><a href="/web/dashboard.html" aria-label="Dashboard"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+                    <li><a href="../analysisPage/analysis.html" aria-label="Sentiment Analysis"><i class="fas fa-heart-pulse"></i> Analysis</a></li>
+                    <li><a href="../newsPage/news.html" aria-label="News"><i class="fas fa-newspaper"></i> News</a></li>
+                    <li><a href="#" aria-label="Trading"><i class="fas fa-chart-candlestick"></i> Trading</a></li>
+                    <li><a href="../web/chatbotPage/ChatBot.html" class="active" aria-label="AI Agent"><i class="fas fa-robot"></i> AI Agent</a></li>
+                </ul>
+            </nav>
+
+            <!-- Theme Toggle -->
+            <div class="theme-controls">
+                <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark/Light Mode" aria-label="Toggle theme">
+                    <i class="fas fa-moon" id="themeIcon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="main-container" role="main">
+        <!-- Sidebar for Chat History -->
+        <aside class="chat-sidebar" id="chatSidebar" role="complementary" aria-label="Chat history">
+            <div class="sidebar-header">
+                <h3><i class="fas fa-history"></i> Chat History</h3>
+                <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Toggle sidebar">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+            </div>
+            
+            <div class="sidebar-content">
+                <div class="chat-sessions" id="chatSessions">
+                    <div class="session-item active">
+                        <div class="session-info">
+                            <h4>Current Session</h4>
+                            <span class="session-time">Now</span>
+                        </div>
+                        <button class="session-delete" aria-label="Delete session">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="sidebar-actions">
+                    <button class="new-chat-btn" onclick="startNewChat()" aria-label="Start new chat">
+                        <i class="fas fa-plus"></i> New Chat
+                    </button>
+                    <button class="export-chat-btn" onclick="exportChat()" aria-label="Export chat">
+                        <i class="fas fa-download"></i> Export
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Chat Container -->
+        <div class="chat-container" role="region" aria-label="Chat interface">
+            <!-- Top Controls -->
+            <div class="chat-controls">
+                <div class="control-group">
+                    <button class="control-btn" onclick="toggleSidebar()" title="Toggle History" aria-label="Toggle chat history">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <button class="control-btn" onclick="clearChat()" title="Clear Chat" aria-label="Clear current chat">
+                        <i class="fas fa-broom"></i>
+                    </button>
+                </div>
+                
+                <div class="control-group">
+                    <button class="control-btn voice-btn" onclick="toggleVoiceInput()" title="Voice Input" aria-label="Toggle voice input">
+                        <i class="fas fa-microphone" id="voiceIcon"></i>
+                    </button>
+                    <button class="control-btn" onclick="openConfig()" title="Settings" aria-label="Open settings">
+                        <i class="fas fa-cog"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Chat Header -->
+            <div class="chat-header">
+                <div class="header-content">
+                    <h1>CryptoVision AI</h1>
+                    <p>Your Intelligent Crypto Assistant</p>
+                    
+                    <!-- Enhanced Status -->
+                    <div class="connection-status" id="connectionStatus">
+                        <div class="status-indicator">
+                            <span class="status-dot" id="statusDot" aria-hidden="true"></span>
+                            <span id="statusText">Initializing...</span>
+                        </div>
+                        <div class="ai-model-info" id="aiModelInfo">
+                            <i class="fas fa-brain"></i>
+                            <span id="currentModel">Smart AI</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Actions -->
+                <div class="quick-actions" id="quickActions">
+                    <button class="quick-action" onclick="sendQuickMessage('What is Bitcoin?')" aria-label="Ask about Bitcoin">
+                        <i class="fab fa-bitcoin"></i>
+                        <span>Bitcoin Info</span>
+                    </button>
+                    <button class="quick-action" onclick="sendQuickMessage('Current crypto market trends?')" aria-label="Ask about market trends">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Market Trends</span>
+                    </button>
+                    <button class="quick-action" onclick="sendQuickMessage('Trading strategies for beginners?')" aria-label="Ask about trading strategies">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>Trading Tips</span>
+                    </button>
+                    <button class="quick-action" onclick="sendQuickMessage('Explain DeFi')" aria-label="Ask about DeFi">
+                        <i class="fas fa-coins"></i>
+                        <span>DeFi Guide</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Chat Messages -->
+            <div class="chat-messages" id="chatMessages" role="log" aria-live="polite" aria-label="Chat messages">
+                <div class="welcome-message" role="article">
+                    <div class="message-avatar" aria-hidden="true">🤖</div>
+                    <div class="message-content">
+                        <h2>Welcome to CryptoVision AI!</h2>
+                        <p>I'm your intelligent cryptocurrency assistant. I can help you with:</p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-chart-line"></i> Market analysis and trends</li>
+                            <li><i class="fas fa-graduation-cap"></i> Trading strategies and education</li>
+                            <li><i class="fas fa-coins"></i> Cryptocurrency explanations</li>
+                            <li><i class="fas fa-shield-alt"></i> Security best practices</li>
+                        </ul>
+                        <p class="help-text">
+                            <i class="fas fa-lightbulb"></i> 
+                            <strong>Pro Tip:</strong> Configure your AI provider in settings for enhanced responses, or use our smart offline mode!
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Typing Indicator -->
+            <div class="typing-indicator" id="typingIndicator" style="display: none;" aria-label="AI is typing">
+                <div class="message-avatar" aria-hidden="true">🤖</div>
+                <div class="typing-content">
+                    <div class="typing-dots" aria-hidden="true">
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                    </div>
+                    <span class="typing-text">AI is thinking...</span>
+                </div>
+            </div>
+
+            <!-- Chat Input -->
+            <div class="chat-input" role="region" aria-label="Message input">
+                <!-- File Upload Area -->
+                <div class="file-upload-area" id="fileUploadArea" style="display: none;">
+                    <div class="upload-content">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>Drop files here or click to upload</p>
+                        <input type="file" id="fileInput" multiple accept=".txt,.pdf,.doc,.docx,.jpg,.png" hidden>
+                    </div>
+                </div>
+
+                <!-- Input Container -->
+                <div class="input-container">
+                    <div class="input-wrapper">
+                        <!-- Attachment Button -->
+                        <button class="attachment-btn" onclick="toggleFileUpload()" title="Attach File" aria-label="Attach file">
+                            <i class="fas fa-paperclip"></i>
+                        </button>
+
+                        <!-- Text Input -->
+                        <textarea 
+                            class="input-field"
+                            id="messageInput"
+                            placeholder="Ask me anything about cryptocurrency..."
+                            onkeypress="handleKeyPress(event)"
+                            oninput="handleInputChange()"
+                            maxlength="2000"
+                            rows="1"
+                            aria-label="Message input"
+                            role="textbox"
+                            aria-multiline="true"
+                        ></textarea>
+
+                        <!-- Character Counter -->
+                        <div class="char-counter" id="charCounter">0/2000</div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="action-buttons">
+                        <button class="action-btn voice-btn" onclick="toggleVoiceInput()" title="Voice Input" aria-label="Voice input">
+                            <i class="fas fa-microphone" id="voiceInputIcon"></i>
+                        </button>
+                        <button class="send-button" id="sendButton" onclick="sendMessage()" title="Send Message" aria-label="Send message">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Voice Recording Indicator -->
+                <div class="voice-recording" id="voiceRecording" style="display: none;">
+                    <div class="recording-content">
+                        <div class="recording-animation">
+                            <div class="pulse-ring"></div>
+                            <i class="fas fa-microphone"></i>
+                        </div>
+                        <p>Listening... Speak now</p>
+                        <button class="stop-recording" onclick="stopVoiceInput()">
+                            <i class="fas fa-stop"></i> Stop
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Enhanced Configuration Modal -->
+    <div class="config-modal" id="configModal" style="display: none;" role="dialog" aria-labelledby="configTitle" aria-modal="true">
+        <div class="config-content">
+            <div class="config-header">
+                <h3 id="configTitle"><i class="fas fa-cog"></i> AI Configuration</h3>
+                <button class="close-btn" onclick="closeConfig()" title="Close" aria-label="Close configuration">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="config-body">
+                <!-- AI Provider Selection -->
+                <div class="config-section">
+                    <h4><i class="fas fa-robot"></i> AI Provider</h4>
+                    <div class="provider-grid">
+                        <div class="provider-card" data-provider="mock">
+                            <div class="provider-icon">🤖</div>
+                            <h5>Smart Mock AI</h5>
+                            <p>Free • Context-aware responses</p>
+                            <div class="provider-badge free">FREE</div>
+                        </div>
+                        <div class="provider-card" data-provider="groq">
+                            <div class="provider-icon">⚡</div>
+                            <h5>Groq Llama</h5>
+                            <p>Free tier • Ultra-fast responses</p>
+                            <div class="provider-badge free">FREE</div>
+                        </div>
+                        <div class="provider-card" data-provider="openai">
+                            <div class="provider-icon">🧠</div>
+                            <h5>OpenAI GPT</h5>
+                            <p>Premium • Most advanced</p>
+                            <div class="provider-badge paid">PAID</div>
+                        </div>
+                        <div class="provider-card" data-provider="huggingface">
+                            <div class="provider-icon">🤗</div>
+                            <h5>Hugging Face</h5>
+                            <p>Free • Open source models</p>
+                            <div class="provider-badge free">FREE</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- API Configuration -->
+                <div class="config-section">
+                    <h4><i class="fas fa-key"></i> API Configuration</h4>
+                    <div class="input-group">
+                        <label for="apiKeyInput">API Key (Optional for free providers):</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-key"></i>
+                            <input 
+                                type="password"
+                                id="apiKeyInput"
+                                placeholder="Enter your API key..."
+                                value=""
+                                aria-describedby="apiKeyHelp"
+                            >
+                            <button class="toggle-password" onclick="togglePasswordVisibility()" aria-label="Toggle password visibility">
+                                <i class="fas fa-eye" id="passwordToggleIcon"></i>
+                            </button>
+                        </div>
+                        <small class="help-text" id="apiKeyHelp">
+                            <strong>Get your free API keys:</strong><br>
+                            • <a href="https://console.groq.com/keys" target="_blank" rel="noopener">Groq (Recommended - Free & Fast)</a><br>
+                            • <a href="https://huggingface.co/settings/tokens" target="_blank" rel="noopener">Hugging Face (Free)</a><br>
+                            • <a href="https://platform.openai.com/api-keys" target="_blank" rel="noopener">OpenAI (Paid)</a>
+                        </small>
+                    </div>
+                </div>
+
+                <!-- Advanced Settings -->
+                <div class="config-section">
+                    <h4><i class="fas fa-sliders-h"></i> Advanced Settings</h4>
+                    
+                    <div class="setting-row">
+                        <label for="temperatureSlider">Response Creativity:</label>
+                        <div class="slider-container">
+                            <input type="range" id="temperatureSlider" min="0" max="1" step="0.1" value="0.7">
+                            <span class="slider-value" id="temperatureValue">0.7</span>
+                        </div>
+                    </div>
+
+                    <div class="setting-row">
+                        <label for="maxTokensInput">Max Response Length:</label>
+                        <select id="maxTokensInput">
+                            <option value="250">Short (250 tokens)</option>
+                            <option value="500" selected>Medium (500 tokens)</option>
+                            <option value="1000">Long (1000 tokens)</option>
+                        </select>
+                    </div>
+
+                    <div class="setting-row">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="contextMemory" checked>
+                            <span class="checkmark"></span>
+                            Remember conversation context
+                        </label>
+                    </div>
+
+                    <div class="setting-row">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="voiceEnabled" checked>
+                            <span class="checkmark"></span>
+                            Enable voice input/output
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Usage Statistics -->
+                <div class="config-section">
+                    <h4><i class="fas fa-chart-bar"></i> Usage Statistics</h4>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-value" id="totalMessages">0</div>
+                            <div class="stat-label">Messages Sent</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="totalSessions">1</div>
+                            <div class="stat-label">Chat Sessions</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="avgResponseTime">0.8s</div>
+                            <div class="stat-label">Avg Response Time</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Action Buttons -->
+                <div class="config-buttons">
+                    <button class="secondary-btn" onclick="resetSettings()" aria-label="Reset to defaults">
+                        <i class="fas fa-undo"></i> Reset
+                    </button>
+                    <button class="cancel-btn" onclick="closeConfig()" aria-label="Cancel changes">
+                        <i class="fas fa-times"></i> Cancel
+                    </button>
+                    <button class="save-btn" onclick="saveConfig()" aria-label="Save configuration">
+                        <i class="fas fa-save"></i> Save
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Toast -->
+    <div class="toast success-toast" id="successToast" style="display: none;" role="alert" aria-live="assertive">
+        <div class="toast-content">
+            <i class="fas fa-check-circle"></i>
+            <span id="successMessage">Configuration saved successfully!</span>
+        </div>
+        <button class="toast-close" onclick="hideToast('successToast')" aria-label="Close notification">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
+    <!-- Error Toast -->
+    <div class="toast error-toast" id="errorToast" style="display: none;" role="alert" aria-live="assertive">
+        <div class="toast-content">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span id="errorMessage">An error occurred</span>
+        </div>
+        <button class="toast-close" onclick="hideToast('errorToast')" aria-label="Close notification">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
+    <!-- Info Toast -->
+    <div class="toast info-toast" id="infoToast" style="display: none;" role="alert" aria-live="polite">
+        <div class="toast-content">
+            <i class="fas fa-info-circle"></i>
+            <span id="infoMessage">Information</span>
+        </div>
+        <button class="toast-close" onclick="hideToast('infoToast')" aria-label="Close notification">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
+    <!-- Keyboard Shortcuts Help -->
+    <div class="shortcuts-help" id="shortcutsHelp" style="display: none;">
+        <div class="shortcuts-content">
+            <h3><i class="fas fa-keyboard"></i> Keyboard Shortcuts</h3>
+            <div class="shortcuts-list">
+                <div class="shortcut-item">
+                    <kbd>Enter</kbd>
+                    <span>Send message</span>
+                </div>
+                <div class="shortcut-item">
+                    <kbd>Shift</kbd> + <kbd>Enter</kbd>
+                    <span>New line</span>
+                </div>
+                <div class="shortcut-item">
+                    <kbd>Ctrl</kbd> + <kbd>K</kbd>
+                    <span>Clear chat</span>
+                </div>
+                <div class="shortcut-item">
+                    <kbd>Ctrl</kbd> + <kbd>,</kbd>
+                    <span>Open settings</span>
+                </div>
+                <div class="shortcut-item">
+                    <kbd>Esc</kbd>
+                    <span>Close modals</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/web/chatbotPage/ChatBot.js"></script>
+    
+    <!-- Service Worker for PWA -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => console.log('SW registered'))
+                    .catch(error => console.log('SW registration failed'));
+            });
+        }
+    </script>
+</body>
+</html>

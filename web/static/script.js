@@ -1,3 +1,7 @@
+
+
+console.log('Script loaded successfully');
+
 // Inisasi Global variables
 let historicalData = [];
 let currentChart = null;
@@ -11,6 +15,8 @@ let lineChartData = {
   yearly: { labels: [], data: [] }
 };
 let activeModel = 'linear';
+let apiKey = ''; // Declare apiKey to avoid undefined errors
+let conversationHistory = [];
 
 // API Configuration - Use consistent endpoint
 const API_BASE_URL = window.location.origin; // Use same origin as the webpage
@@ -33,8 +39,7 @@ const highLowEl = document.getElementById("high-low");
 // Initialize application
 document.addEventListener('DOMContentLoaded', async () => {
   try {
-
-    // Setup popup event listeners PERTAMA
+    // Setup popup event listeners 
     setupPopupEventListeners();
     
     // Pastikan popup ready
@@ -1514,7 +1519,11 @@ function cleanup() {
 }
 
 
-window.testPopup = testPopup;
-// Handle page unload
+
+
 window.showHistoricalPredictions = showHistoricalPredictions;
+
+window.testPopup = testPopup;
+window.closeHistoricalPredictions = closeHistoricalPredictions;
 window.addEventListener('beforeunload', cleanup);
+

@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptoVision - Live Dashboard</title>
+    <link rel="stylesheet" href="/web/analysisPage/analysis.css">
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="header-content">
+            <div class="logo">CryptoVision</div>
+            <nav class="nav-menu">
+                <a href="/web/dashboard.html" class="nav-item">Dashboard</a>
+                <a href="/web/analysisPage/analysis.html" class="nav-item active">Analysis</a>
+                <a href="/web/newsPage/news.html" class="nav-item">News</a>
+                <a href="#" class="nav-item">Trading</a>
+                <a href="/web/chatbotPage/ChatBot.html" class="nav-item">AI Agent</a>
+            </nav>
+            <div class="status-indicator">
+                <div class="status-dot"></div>
+                <span id="connection-status">Live Demo</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Slideshow - Reduced Brightness -->
+    <div class="slideshow-container">
+        <div class="slide active" style="background-image: linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1639762681485-074b7f938ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');">
+            <div class="slide-content">
+                <h2 class="slide-title">Welcome to CryptoVision Analysis Segment</h2>
+                <p class="slide-subtitle">Your ultimate cryptocurrency analysis platform</p>
+                <a href="#" class="slide-cta">Start Trading</a>
+            </div>
+        </div>
+        
+        <div class="slide" style="background-image: linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');">
+            <div class="slide-content">
+                <h2 class="slide-title">Real-Time Market Data</h2>
+                <p class="slide-subtitle">Track Bitcoin, Ethereum, and thousands of cryptocurrencies</p>
+                <a href="#" class="slide-cta">View Markets</a>
+            </div>
+        </div>
+        
+        <div class="slide" style="background-image: linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1642790106117-e829e14a795f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');">
+            <div class="slide-content">
+                <h2 class="slide-title">AI-Powered Insights</h2>
+                <p class="slide-subtitle">Advanced sentiment analysis from social media and news</p>
+                <a href="#" class="slide-cta">Learn More</a>
+            </div>
+        </div>
+
+        <div class="slideshow-nav">
+            <div class="nav-dot active" onclick="currentSlide(1)"></div>
+            <div class="nav-dot" onclick="currentSlide(2)"></div>
+            <div class="nav-dot" onclick="currentSlide(3)"></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="main-content">
+            <!-- Hero Section -->
+            <div class="hero-section">
+                <div class="hero-content">
+                    <h1 class="hero-title">Real-Time Crypto Sentiment</h1>
+                    <p class="hero-subtitle">AI-powered analysis of cryptocurrency market sentiment from social media and news sources</p>
+                    
+                    <div class="hero-stats">
+                        <div class="hero-stat">
+                            <div class="hero-stat-value">
+                                <span style="color: #10b981;">78.5%</span>
+                            </div>
+                            <div class="hero-stat-label">Bullish Sentiment</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-value">
+                                <span style="color: #00d4ff;">1.2M</span>
+                            </div>
+                            <div class="hero-stat-label">Social Mentions</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-value">
+                                <span style="color: #f59e0b;">64</span>
+                            </div>
+                            <div class="hero-stat-label">Fear & Greed</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-value">
+                                <span style="color: #8b5cf6;">$2.1T</span>
+                            </div>
+                            <div class="hero-stat-label">Market Cap</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enhanced Market Overview -->
+            <div class="market-overview">
+                <div class="market-overview-header">
+                    <div>
+                        <div class="market-overview-title">Market Overview</div>
+                        <div class="market-overview-subtitle">Real-time cryptocurrency market insights and key metrics</div>
+                    </div>
+                    <div class="market-status">
+                        <div class="market-status-dot"></div>
+                        <span class="market-status-text">Demo Data</span>
+                    </div>
+                </div>
+                
+                <div class="market-grid">
+                    <div class="metric-card positive">
+                        <div class="metric-header">
+                            <div>
+                                <div class="metric-icon">₿</div>
+                                <div class="metric-label">Bitcoin Price</div>
+                            </div>
+                            <div class="metric-trend positive">UP</div>
+                        </div>
+                        <div class="metric-value" style="color: #10b981;">$67,234</div>
+                        <div class="metric-change positive">
+                            <span>↗</span> +5.2% (24h)
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card positive">
+                        <div class="metric-header">
+                            <div>
+                                <div class="metric-icon">Ξ</div>
+                                <div class="metric-label">Ethereum Price</div>
+                            </div>
+                            <div class="metric-trend positive">UP</div>
+                        </div>
+                        <div class="metric-value" style="color: #10b981;">$3,456</div>
+                        <div class="metric-change positive">
+                            <span>↗</span> +3.8% (24h)
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card primary">
+                        <div class="metric-header">
+                            <div>
+                                <div class="metric-icon">📊</div>
+                                <div class="metric-label">Total Market Cap</div>
+                            </div>
+                            <div class="metric-trend positive">LIVE</div>
+                        </div>
+                        <div class="metric-value" style="color: #00d4ff;">$2.1T</div>
+                        <div class="metric-change positive">
+                            <span>↗</span> +3.8% (24h)
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card neutral">
+                        <div class="metric-header">
+                            <div>
+                                <div class="metric-icon">🔥</div>
+                                <div class="metric-label">Bitcoin Dominance</div>
+                            </div>
+                            <div class="metric-trend neutral">STABLE</div>
+                        </div>
+                        <div class="metric-value" style="color: #f59e0b;">52.3%</div>
+                        <div class="metric-change neutral">
+                            <span>→</span> +0.1% (24h)
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Market Insights -->
+            <div class="market-insights">
+                <div class="section-header">
+                    <div>
+                        <div class="section-title">Market Insights</div>
+                        <div class="section-subtitle">AI-powered analysis and key market indicators</div>
+                    </div>
+                </div>
+                
+                <div class="insights-grid">
+                    <div class="insights-main">
+                        <div class="insight-card">
+                            <div class="insight-header">
+                                <div class="insight-icon" style="background: rgba(16, 185, 129, 0.1); color: #10b981;">
+                                    🚀
+                                </div>
+                                <div class="insight-title">Bullish Momentum Detected</div>
+                            </div>
+                            <div class="insight-content">
+                                Strong institutional buying pressure and positive sentiment indicators suggest continued upward momentum. Whale activity has increased by 23% in the last 24 hours, with major accumulation patterns emerging across Bitcoin and Ethereum.
+                            </div>
+                            <div class="insight-metrics">
+                                <div class="insight-metric">
+                                    <div class="insight-metric-value positive">+23%</div>
+                                    <div class="insight-metric-label">Whale Activity</div>
+                                </div>
+                                <div class="insight-metric">
+                                    <div class="insight-metric-value positive">87%</div>
+                                    <div class="insight-metric-label">Buy Pressure</div>
+                                </div>
+                                <div class="insight-metric">
+                                    <div class="insight-metric-value positive">+15%</div>
+                                    <div class="insight-metric-label">Institutional Flow</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="insight-card">
+                            <div class="insight-header">
+                                <div class="insight-icon" style="background: rgba(0, 212, 255, 0.1); color: #00d4ff;">
+                                    📈
+                                </div>
+                                <div class="insight-title">Social Sentiment Analysis</div>
+                            </div>
+                            <div class="insight-content">
+                                Cross-platform sentiment analysis shows overwhelmingly positive outlook. Twitter leads with 82% positive mentions, followed by Reddit at 76%. TikTok shows growing crypto interest among younger demographics with 68% positive sentiment.
+                            </div>
+                            <div class="insight-metrics">
+                                <div class="insight-metric">
+                                    <div class="insight-metric-value positive">82%</div>
+                                    <div class="insight-metric-label">Twitter Positive</div>
+                                </div>
+                                <div class="insight-metric">
+                                    <div class="insight-metric-value positive">76%</div>
+                                    <div class="insight-metric-label">Reddit Positive</div>
+                                </div>
+                                <div class="insight-metric">
+                                    <div class="insight-metric-value positive">68%</div>
+                                    <div class="insight-metric-label">TikTok Positive</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="insight-card">
+                            <div class="insight-header">
+                                <div class="insight-icon" style="background: rgba(245, 158, 11, 0.1); color: #f59e0b;">
+                                    ⚠️
+                                </div>
+                                <div class="insight-title">Risk Assessment</div>
+                            </div>
+                            <div class="insight-content">
+                                While sentiment remains positive, traders should watch for potential profit-taking near resistance levels. Volatility is expected to remain elevated due to upcoming economic events and regulatory developments.
+                            </div>
+                            <div class="insight-metrics">
+                                <div class="insight-metric">
+                                    <div class="insight-metric-value neutral">Medium</div>
+                                    <div class="insight-metric-label">Risk Level</div>
+                                </div>
+                                <div class="insight-metric">
+                                    <div class="insight-metric-value neutral">High</div>
+                                    <div class="insight-metric-label">Volatility</div>
+                                </div>
+                                <div class="insight-metric">
+                                    <div class="insight-metric-value positive">Stable</div>
+                                    <div class="insight-metric-label">Liquidity</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="insights-sidebar">
+                        <div class="quick-stat">
+                            <div class="quick-stat-value positive">92%</div>
+                            <div class="quick-stat-label">Market Confidence</div>
+                        </div>
+                        
+                        <div class="quick-stat">
+                            <div class="quick-stat-value primary">$1.2B</div>
+                            <div class="quick-stat-label">Net Inflows (24h)</div>
+                        </div>
+                        
+                        <div class="quick-stat">
+                            <div class="quick-stat-value neutral">2.3x</div>
+                            <div class="quick-stat-label">Volatility Ratio</div>
+                        </div>
+                        
+                        <div class="quick-stat">
+                            <div class="quick-stat-value positive">78%</div>
+                            <div class="quick-stat-label">Long/Short Ratio</div>
+                        </div>
+                        
+                        <div class="quick-stat">
+                            <div class="quick-stat-value primary">156K</div>
+                            <div class="quick-stat-label">Active Addresses</div>
+                        </div>
+                    </div>
+                </div>
+
+                
+            </div>
+
+            <!-- Top Cryptocurrencies -->
+            <div class="top-coins">
+                <div class="section-header">
+                    <div>
+                        <div class="section-title">Top Cryptocurrencies</div>
+                        <div class="section-subtitle">Live prices and 24h changes with real logos</div>
+                    </div>
+                    <button class="refresh-btn" onclick="refreshData()" id="refresh-btn">
+                        <span>Refresh</span>
+                    </button>
+                </div>
+                
+                <div style="overflow-x: auto;">
+                    <table class="coins-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Coin</th>
+                                <th>Price</th>
+                                <th>24h Change</th>
+                                <th>Market Cap</th>
+                                <th>Volume (24h)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="coins-table-body">
+                            <tr>
+                                <td>1</td>
+                                <td>
+                                    <div class="coin-info">
+                                        <div class="coin-logo">
+                                            <img src="https://assets.coingecko.com/coins/images/1/small/bitcoin.png" alt="Bitcoin">
+                                        </div>
+                                        <div>
+                                            <div class="coin-name">Bitcoin</div>
+                                            <div class="coin-symbol">BTC</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="font-weight: 600; color: #ffffff;">$67,234.50</td>
+                                <td>
+                                    <span class="price-change positive">+5.24%</span>
+                                </td>
+                                <td style="color: rgba(255, 255, 255, 0.8);">$1.32T</td>
+                                <td style="color: rgba(255, 255, 255, 0.8);">$28.5B</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>
+                                    <div class="coin-info">
+                                        <div class="coin-logo">
+                                            <img src="https://assets.coingecko.com/coins/images/279/small/ethereum.png" alt="Ethereum">
+                                        </div>
+                                        <div>
+                                            <div class="coin-name">Ethereum</div>
+                                            <div class="coin-symbol">ETH</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="font-weight: 600; color: #ffffff;">$3,456.78</td>
+                                <td>
+                                    <span class="price-change positive">+3.82%</span>
+                                </td>
+                                <td style="color: rgba(255, 255, 255, 0.8);">$415.2B</td>
+                                <td style="color: rgba(255, 255, 255, 0.8);">$15.3B</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>
+                                    <div class="coin-info">
+                                        <div class="coin-logo">
+                                            <img src="https://assets.coingecko.com/coins/images/825/small/bnb-icon2_2x.png" alt="BNB">
+                                        </div>
+                                        <div>
+                                            <div class="coin-name">BNB</div>
+                                            <div class="coin-symbol">BNB</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="font-weight: 600; color: #ffffff;">$432.15</td>
+                                <td>
+                                    <span class="price-change negative">-1.23%</span>
+                                </td>
+                                <td style="color: rgba(255, 255, 255, 0.8);">$66.4B</td>
+                                <td style="color: rgba(255, 255, 255, 0.8);">$1.8B</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>
+                                    <div class="coin-info">
+                                        <div class="coin-logo">
+                                            <img src="https://assets.coingecko.com/coins/images/4128/small/solana.png" alt="Solana">
+                                        </div>
+                                        <div>
+                                            <div class="coin-name">Solana</div>
+                                            <div class="coin-symbol">SOL</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="font-weight: 600; color: #ffffff;">$156.89</td>
+                                <td>
+                                    <span class="price-change positive">+7.45%</span>
+                                </td>
+                                <td style="color: rgba(255, 255, 255, 0.8);">$72.1B</td>
+                                <td style="color: rgba(255, 255, 255, 0.8);">$3.2B</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>
+                                    <div class="coin-info">
+                                        <div class="coin-logo">
+                                            <img src="https://assets.coingecko.com/coins/images/44/small/xrp-symbol-white-128.png" alt="XRP">
+                                        </div>
+                                        <div>
+                                            <div class="coin-name">XRP</div>
+                                            <div class="coin-symbol">XRP</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="font-weight: 600; color: #ffffff;">$0.6234</td>
+                                <td>
+                                    <span class="price-change positive">+2.15%</span>
+                                </td>
+                                <td style="color: rgba(255, 255, 255, 0.8);">$35.2B</td>
+                                <td style="color: rgba(255, 255, 255, 0.8);">$1.2B</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>
+                                    <div class="coin-info">
+                                        <div class="coin-logo">
+                                            <img src="https://assets.coingecko.com/coins/images/975/small/cardano.png" alt="Cardano">
+                                        </div>
+                                        <div>
+                                            <div class="coin-name">Cardano</div>
+                                            <div class="coin-symbol">ADA</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="font-weight: 600; color: #ffffff;">$0.4567</td>
+                                <td>
+                                    <span class="price-change positive">+1.89%</span>
+                                </td>
+                                <td style="color: rgba(255, 255, 255, 0.8);">$16.1B</td>
+                                <td style="color: rgba(255, 255, 255, 0.8);">$890M</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>
+                                    <div class="coin-info">
+                                        <div class="coin-logo">
+                                            <img src="https://assets.coingecko.com/coins/images/5/small/dogecoin.png" alt="Dogecoin">
+                                        </div>
+                                        <div>
+                                            <div class="coin-name">Dogecoin</div>
+                                            <div class="coin-symbol">DOGE</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="font-weight: 600; color: #ffffff;">$0.0789</td>
+                                <td>
+                                    <span class="price-change positive">+4.32%</span>
+                                </td>
+                                <td style="color: rgba(255, 255, 255, 0.8);">$11.3B</td>
+                                <td style="color: rgba(255, 255, 255, 0.8);">$567M</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>
+                                    <div class="coin-info">
+                                        <div class="coin-logo">
+                                            <img src="https://assets.coingecko.com/coins/images/12559/small/Avalanche_Circle_RedWhite_Trans.png" alt="Avalanche">
+                                        </div>
+                                        <div>
+                                            <div class="coin-name">Avalanche</div>
+                                            <div class="coin-symbol">AVAX</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="font-weight: 600; color: #ffffff;">$34.56</td>
+                                <td>
+                                    <span class="price-change negative">-0.87%</span>
+                                </td>
+                                <td style="color: rgba(255, 255, 255, 0.8);">$13.8B</td>
+                                <td style="color: rgba(255, 255, 255, 0.8);">$423M</td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>
+                                    <div class="coin-info">
+                                        <div class="coin-logo">
+                                            <img src="https://assets.coingecko.com/coins/images/7598/small/wrapped_bitcoin_wbtc.png" alt="Wrapped Bitcoin">
+                                        </div>
+                                        <div>
+                                            <div class="coin-name">Wrapped Bitcoin</div>
+                                            <div class="coin-symbol">WBTC</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="font-weight: 600; color: #ffffff;">$67,189.23</td>
+                                <td>
+                                    <span class="price-change positive">+5.18%</span>
+                                </td>
+                                <td style="color: rgba(255, 255, 255, 0.8);">$10.4B</td>
+                                <td style="color: rgba(255, 255, 255, 0.8);">$234M</td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>
+                                    <div class="coin-info">
+                                        <div class="coin-logo">
+                                            <img src="https://assets.coingecko.com/coins/images/877/small/chainlink-new-logo.png" alt="Chainlink">
+                                        </div>
+                                        <div>
+                                            <div class="coin-name">Chainlink</div>
+                                            <div class="coin-symbol">LINK</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="font-weight: 600; color: #ffffff;">$14.78</td>
+                                <td>
+                                    <span class="price-change positive">+2.67%</span>
+                                </td>
+                                <td style="color: rgba(255, 255, 255, 0.8);">$8.9B</td>
+                                <td style="color: rgba(255, 255, 255, 0.8);">$345M</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Enhanced Sentiment Analysis -->
+            <div class="sentiment-analysis">
+                <div class="section-header">
+                    <div>
+                        <div class="section-title">Sentiment Analysis</div>
+                        <div class="section-subtitle">Real-time sentiment tracking across social media platforms</div>
+                    </div>
+                    <button class="refresh-btn" onclick="refreshSentiment()">
+                        <span>Refresh</span>
+                    </button>
+                </div>
+
+                <!-- Overall Sentiment Bar -->
+                <div class="sentiment-bar-container">
+                    <h3 style="margin-bottom: 16px; color: #ffffff;">Overall Market Sentiment</h3>
+                    <div class="sentiment-bar">
+                        <div class="sentiment-bar-fill">
+                            <div class="sentiment-positive" style="width: 65%;"></div>
+                            <div class="sentiment-neutral" style="width: 25%;"></div>
+                            <div class="sentiment-negative" style="width: 10%;"></div>
+                        </div>
+                    </div>
+                    <div class="sentiment-legend">
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: #10b981;"></div>
+                            <span>Positive (65%)</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: #f59e0b;"></div>
+                            <span>Neutral (25%)</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: #ef4444;"></div>
+                            <span>Negative (10%)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social Media Platform Breakdown -->
+                <div class="social-breakdown">
+                    <h3 style="margin-bottom: 20px; color: #ffffff;">Sentiment by Platform</h3>
+                    <div class="social-platforms">
+                        <div class="platform-card">
+                            <div class="platform-icon">🐦</div>
+                            <div class="platform-name">Twitter/X</div>
+                            <div class="platform-sentiment">1.2M mentions</div>
+                            <div class="platform-score positive">82% Positive</div>
+                        </div>
+                        <div class="platform-card">
+                            <div class="platform-icon">📷</div>
+                            <div class="platform-name">Instagram</div>
+                            <div class="platform-sentiment">456K mentions</div>
+                            <div class="platform-score positive">74% Positive</div>
+                        </div>
+                        <div class="platform-card">
+                            <div class="platform-icon">🎵</div>
+                            <div class="platform-name">TikTok</div>
+                            <div class="platform-sentiment">892K mentions</div>
+                            <div class="platform-score positive">68% Positive</div>
+                        </div>
+                        <div class="platform-card">
+                            <div class="platform-icon">🤖</div>
+                            <div class="platform-name">Reddit</div>
+                            <div class="platform-sentiment">234K mentions</div>
+                            <div class="platform-score positive">76% Positive</div>
+                        </div>
+                        <div class="platform-card">
+                            <div class="platform-icon">💼</div>
+                            <div class="platform-name">LinkedIn</div>
+                            <div class="platform-sentiment">89K mentions</div>
+                            <div class="platform-score positive">85% Positive</div>
+                        </div>
+                        <div class="platform-card">
+                            <div class="platform-icon">📺</div>
+                            <div class="platform-name">YouTube</div>
+                            <div class="platform-sentiment">345K mentions</div>
+                            <div class="platform-score positive">71% Positive</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sentiment Charts -->
+                <div class="sentiment-grid">
+                    <div class="chart-container">
+                        <div class="chart-title">Sentiment Distribution</div>
+                        <canvas id="sentiment-pie-chart" class="chart-canvas"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <div class="chart-title">Platform Comparison</div>
+                        <canvas id="sentiment-bar-chart" class="chart-canvas"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Market Trends -->
+
+            <!-- Word Cloud -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-title">Trending Keywords</div>
+                </div>
+                <div class="word-cloud">
+                    <span class="word-item bullish" style="font-size: 2.2em;">Bitcoin</span>
+                    <span class="word-item bullish" style="font-size: 1.8em;">Bull</span>
+                    <span class="word-item neutral" style="font-size: 1.6em;">Market</span>
+                    <span class="word-item bullish" style="font-size: 1.4em;">Pump</span>
+                    <span class="word-item neutral" style="font-size: 1.2em;">Trading</span>
+                    <span class="word-item bullish" style="font-size: 1.6em;">Moon</span>
+                    <span class="word-item bearish" style="font-size: 1.1em;">Dump</span>
+                    <span class="word-item neutral" style="font-size: 1.3em;">Whale</span>
+                    <span class="word-item bullish" style="font-size: 1.4em;">Hodl</span>
+                    <span class="word-item bearish" style="font-size: 1em;">Bear</span>
+                    <span class="word-item neutral" style="font-size: 1.1em;">DeFi</span>
+                    <span class="word-item bullish" style="font-size: 1.3em;">Adoption</span>
+                    <span class="word-item bullish" style="font-size: 1.2em;">ATH</span>
+                    <span class="word-item neutral" style="font-size: 1.1em;">ETF</span>
+                    <span class="word-item bullish" style="font-size: 1.5em;">Institutional</span>
+                </div>
+            </div>
+
+            <!-- Enhanced Social Sentiment Feed -->
+            <div class="sentiment-feed">
+                <div class="feed-header">
+                    <div>
+                        <div class="section-title">Social Sentiment Feed</div>
+                        <div class="section-subtitle">Real-time sentiment from across social media platforms</div>
+                    </div>
+                    <button class="refresh-btn" onclick="refreshFeed()">Refresh</button>
+                </div>
+                
+                <div class="feed-stats">
+                    <div class="feed-stat">
+                        <div class="feed-stat-number positive">1,847</div>
+                        <div class="feed-stat-label">Positive Posts</div>
+                    </div>
+                    <div class="feed-stat">
+                        <div class="feed-stat-number neutral">692</div>
+                        <div class="feed-stat-label">Neutral Posts</div>
+                    </div>
+                    <div class="feed-stat">
+                        <div class="feed-stat-number negative">284</div>
+                        <div class="feed-stat-label">Negative Posts</div>
+                    </div>
+                    <div class="feed-stat">
+                        <div class="feed-stat-number primary">2,823</div>
+                        <div class="feed-stat-label">Total Posts</div>
+                    </div>
+                    <div class="feed-stat">
+                        <div class="feed-stat-number primary">3.2M</div>
+                        <div class="feed-stat-label">Total Reach</div>
+                    </div>
+                    <div class="feed-stat">
+                        <div class="feed-stat-number positive">78.5%</div>
+                        <div class="feed-stat-label">Bullish Ratio</div>
+                    </div>
+                </div>
+                
+                <div class="filter-tabs">
+                    <button class="filter-btn active" onclick="filterPosts('all', this)">All Posts (2,823)</button>
+                    <button class="filter-btn positive" onclick="filterPosts('positive', this)">↗ Positive (1,847)</button>
+                    <button class="filter-btn neutral" onclick="filterPosts('neutral', this)">— Neutral (692)</button>
+                    <button class="filter-btn negative" onclick="filterPosts('negative', this)">↘ Negative (284)</button>
+                </div>
+                
+                <div class="posts-container">
+                    <div class="post-item positive" data-sentiment="positive">
+                        <div class="post-header">
+                            <div class="post-user">
+                                <div class="user-avatar">C</div>
+                                <div class="user-info">
+                                    <div class="username">@CryptoKing2024</div>
+                                    <div class="post-time">2 hours ago</div>
+                                </div>
+                            </div>
+                            <div class="post-meta">
+                                <div class="platform-badge twitter">TWITTER</div>
+                                <div class="sentiment-badge positive">POSITIVE</div>
+                            </div>
+                        </div>
+                        <div class="post-content">
+                            Bitcoin is showing incredible strength! The institutional adoption is accelerating and we're seeing major companies adding BTC to their balance sheets. This bull run is just getting started! 🚀 #Bitcoin #BTC #ToTheMoon
+                        </div>
+                        <div class="post-stats">
+                            <span>❤️ 1,247</span>
+                            <span>🔄 523</span>
+                            <span>💬 89</span>
+                        </div>
+                    </div>
+                    
+                    <div class="post-item positive" data-sentiment="positive">
+                        <div class="post-header">
+                            <div class="post-user">
+                                <div class="user-avatar">E</div>
+                                <div class="user-info">
+                                    <div class="username">@EthereumMaxi</div>
+                                    <div class="post-time">3 hours ago</div>
+                                </div>
+                            </div>
+                            <div class="post-meta">
+                                <div class="platform-badge instagram">INSTAGRAM</div>
+                                <div class="sentiment-badge positive">POSITIVE</div>
+                            </div>
+                        </div>
+                        <div class="post-content">
+                            Ethereum's upcoming upgrades are going to be game-changing! The scalability improvements and reduced gas fees will make DeFi accessible to everyone. Bullish on ETH! 💎🙌 #Ethereum #DeFi #Web3
+                        </div>
+                        <div class="post-stats">
+                            <span>❤️ 892</span>
+                            <span>💬 156</span>
+                            <span>📤 67</span>
+                        </div>
+                    </div>
+                    
+                    <div class="post-item neutral" data-sentiment="neutral">
+                        <div class="post-header">
+                            <div class="post-user">
+                                <div class="user-avatar">B</div>
+                                <div class="user-info">
+                                    <div class="username">@BlockchainBull</div>
+                                    <div class="post-time">4 hours ago</div>
+                                </div>
+                            </div>
+                            <div class="post-meta">
+                                <div class="platform-badge reddit">REDDIT</div>
+                                <div class="sentiment-badge neutral">NEUTRAL</div>
+                            </div>
+                        </div>
+                        <div class="post-content">
+                            Bitcoin price consolidating around current levels. Market seems to be waiting for the next catalyst. Volume is relatively low compared to recent days. Watching key support and resistance levels. #BTC #Trading #Analysis
+                        </div>
+                        <div class="post-stats">
+                            <span>⬆️ 234</span>
+                            <span>💬 78</span>
+                            <span>🏆 12</span>
+                        </div>
+                    </div>
+                    
+                    <div class="post-item positive" data-sentiment="positive">
+                        <div class="post-header">
+                            <div class="post-user">
+                                <div class="user-avatar">T</div>
+                                <div class="user-info">
+                                    <div class="username">@TikTokCrypto</div>
+                                    <div class="post-time">5 hours ago</div>
+                                </div>
+                            </div>
+                            <div class="post-meta">
+                                <div class="platform-badge tiktok">TIKTOK</div>
+                                <div class="sentiment-badge positive">POSITIVE</div>
+                            </div>
+                        </div>
+                        <div class="post-content">
+                            Just explained Bitcoin to my grandma and she wants to buy some! 😂 The mainstream adoption is real folks. When grandmas are asking about crypto, you know we're going mainstream! #Bitcoin #Adoption #Crypto
+                        </div>
+                        <div class="post-stats">
+                            <span>❤️ 2,341</span>
+                            <span>💬 445</span>
+                            <span>📤 678</span>
+                        </div>
+                    </div>
+                    
+                    <div class="post-item negative" data-sentiment="negative">
+                        <div class="post-header">
+                            <div class="post-user">
+                                <div class="user-avatar">A</div>
+                                <div class="user-info">
+                                    <div class="username">@TradingAnalyst</div>
+                                    <div class="post-time">6 hours ago</div>
+                                </div>
+                            </div>
+                            <div class="post-meta">
+                                <div class="platform-badge twitter">TWITTER</div>
+                                <div class="sentiment-badge negative">NEGATIVE</div>
+                            </div>
+                        </div>
+                        <div class="post-content">
+                            Seeing some concerning technical indicators. RSI showing overbought conditions and volume declining. Might see a pullback soon. Risk management is key in these conditions! #Bitcoin #TechnicalAnalysis #RiskManagement
+                        </div>
+                        <div class="post-stats">
+                            <span>❤️ 567</span>
+                            <span>🔄 234</span>
+                            <span>💬 123</span>
+                        </div>
+                    </div>
+                    
+                    <div class="post-item positive" data-sentiment="positive">
+                        <div class="post-header">
+                            <div class="post-user">
+                                <div class="user-avatar">S</div>
+                                <div class="user-info">
+                                    <div class="username">@SolanaSupporter</div>
+                                    <div class="post-time">7 hours ago</div>
+                                </div>
+                            </div>
+                            <div class="post-meta">
+                                <div class="platform-badge reddit">REDDIT</div>
+                                <div class="sentiment-badge positive">POSITIVE</div>
+                            </div>
+                        </div>
+                        <div class="post-content">
+                            Solana's ecosystem is absolutely exploding! New projects launching daily, NFT marketplaces thriving, and DeFi protocols gaining massive traction. The speed and low fees make it a developer's dream. #Solana #SOL #DeFi
+                        </div>
+                        <div class="post-stats">
+                            <span>⬆️ 445</span>
+                            <span>💬 89</span>
+                            <span>🏆 23</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/web/analysisPage/analysis.js"></script>
+</body>
+</html>
+
